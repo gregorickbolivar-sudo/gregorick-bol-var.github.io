@@ -1,10 +1,88 @@
-<!doctype html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Progression Roulette</title>
-<style>
-:root{--bg:#0d0c14;--panel:#191724;--text:#f8f7ff;--muted:#b7b3c8;--accent:#b7a8ff;--good:#71e3a2;--danger:#ff8fa3;--line:rgba(255,255,255,.1)}*{box-sizing:border-box}body{margin:0;min-width:320px;background:radial-gradient(circle at 10% 0,#2a2341,transparent 30rem),radial-gradient(circle at 90% 20%,#25213c,transparent 25rem),var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif}.app{max-width:1120px;margin:auto;padding:28px 18px 50px}.hero{text-align:center;padding:12px 0 24px}.eyebrow{color:var(--accent);font-size:.75rem;letter-spacing:.2em;font-weight:800}.hero h1{margin:8px 0 4px;font-size:clamp(2.2rem,7vw,4rem);letter-spacing:-.06em}.hero p,.muted{margin:0;color:var(--muted)}.dashboard{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card,.tier{background:rgba(25,23,36,.92);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 55px #0004}.card{padding:20px}.card h2{margin:0 0 13px;font-size:1rem}.roulette{min-height:205px;display:grid;place-items:center;text-align:center;background:radial-gradient(circle,#4b3b70 0,#2b263e 31%,transparent 32%)}.result{min-height:72px;display:grid;place-items:center;padding:12px;font-size:clamp(1.35rem,4vw,2rem);font-weight:900;letter-spacing:-.04em}.result small{display:block;color:var(--muted);font-size:.78rem;letter-spacing:0;margin-top:6px}.controls{display:grid;grid-template-columns:1fr auto;gap:10px;margin-top:12px}select,input{width:100%;border:1px solid var(--line);background:#12111b;color:var(--text);border-radius:11px;padding:11px 12px;outline:0}input:focus,select:focus{border-color:var(--accent);box-shadow:0 0 0 3px #a99bff26}.button{border:0;border-radius:11px;padding:11px 15px;background:linear-gradient(135deg,#b7a8ff,#8f7cf5);color:#130f24;font-weight:900;cursor:pointer}.button:disabled{opacity:.55;cursor:not-allowed}.results{margin-top:12px;max-height:145px;overflow:auto}.searchrow{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}.searchrow:last-child{border:0}.badge{font-size:.72rem;padding:4px 8px;border-radius:99px;background:#302c40;color:var(--muted);white-space:nowrap}.badge.done{background:#71e3a223;color:var(--good)}.badge.assigned{background:#b7a8ff22;color:#d5ceff}.empty{padding:12px 0;color:var(--muted);font-size:.9rem}.progress{margin:16px 0;padding:17px 20px;display:grid;grid-template-columns:auto 1fr auto;gap:16px;align-items:center}.progress strong{font-size:1.25rem}.progress span{font-size:.8rem;color:var(--muted)}.bar{height:10px;background:#100f18;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;width:0;border-radius:inherit;background:linear-gradient(90deg,#b6a8ff,#ffb6d8);transition:width .25s}.tiers{display:grid;gap:14px}.tier{overflow:hidden;border-color:color-mix(in srgb,var(--tier) 48%,transparent)}.tierhead{width:100%;border:0;color:var(--text);background:linear-gradient(90deg,color-mix(in srgb,var(--tier) 24%,#211e30),#211e3088);padding:16px 18px;display:grid;grid-template-columns:1fr auto auto;gap:15px;align-items:center;text-align:left;cursor:pointer}.tierhead b{font-size:1.05rem}.tierhead span{font-size:.84rem;color:var(--muted)}.arrow{color:var(--tier)!important;font-size:1.1rem!important}.tierbody{padding:8px 18px 15px}.tierprogress{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--muted);margin:3px 0 11px}.tierprogress .bar{flex:1;height:7px}.tierprogress .bar i{background:var(--tier)}.level{display:grid;grid-template-columns:auto 1fr auto auto;gap:10px;align-items:center;border-top:1px solid var(--line);padding:11px 1px}.check{appearance:none;width:20px;height:20px;border:2px solid #817b98;border-radius:6px;background:transparent;margin:0;cursor:pointer}.check:checked{background:var(--good);border-color:var(--good)}.check:checked:after{content:'✓';display:block;text-align:center;font-weight:900;color:#102016;font-size:14px}.levelname{font-weight:700}.completed .levelname{text-decoration:line-through;color:var(--muted)}.tag{font-size:.7rem;font-weight:800;padding:4px 7px;border-radius:7px;background:#b7a8ff22;color:#d5ceff}.tag.done{background:#71e3a223;color:var(--good)}.release{border:0;background:transparent;color:var(--danger);border-radius:8px;padding:5px 8px;font-size:1rem;cursor:pointer}.release:hover{background:#ff8fa31a}.footer{text-align:center;color:var(--muted);font-size:.78rem;margin-top:20px}.footer button{background:0;border:0;color:#d5ceff;text-decoration:underline;cursor:pointer}@media(max-width:700px){.app{padding:20px 12px 35px}.dashboard{grid-template-columns:1fr}.controls{grid-template-columns:1fr}.progress{grid-template-columns:1fr auto;gap:8px 14px}.progress .bar{grid-column:1/-1;grid-row:2}.tierbody{padding-left:14px;padding-right:14px}.level{grid-template-columns:auto 1fr auto}.tag{display:none}}
-</style></head><body><main class="app"><header class="hero"><div class="eyebrow">GEOMETRY DASH TRACKER</div><h1>Progression Roulette</h1><p>Gira, progresa y conquista tu siguiente demon.</p></header><section class="dashboard"><article class="card roulette"><div><div class="result" id="result">¿Preparado?<small>Elige un tier y gira la ruleta.</small></div><div class="controls"><select id="select" aria-label="Tier"></select><button class="button" id="spin">🎲 GIRAR</button></div></div></article><article class="card"><h2>🔎 Buscar demon</h2><input id="search" type="search" placeholder="Escribe un nombre…" autocomplete="off"><div class="results" id="results"><div class="empty">Busca un demon para ver su tier y estado.</div></div></article></section><section class="card progress"><div><span>PROGRESO TOTAL</span><br><strong id="total">0 / 50</strong></div><div class="bar"><i id="totalbar"></i></div><span id="percent">0%</span></section><section class="tiers" id="tiers"></section><div class="footer">Los datos se guardan automáticamente en este navegador. <button id="export" onclick="const b=new Blob([localStorage.getItem('progression-roulette-v1')||'{}'],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='progression-roulette-progreso.json';a.click();URL.revokeObjectURL(a.href)">Exportar progreso</button> · <button id="import" onclick="document.getElementById('importFile').click()">Importar progreso</button> · <button id="reset">Restablecer progreso</button><input id="importFile" type="file" accept="application/json" hidden onchange="const r=new FileReader();r.onload=()=>{try{JSON.parse(r.result);localStorage.setItem('progression-roulette-v1',r.result);location.reload()}catch{alert('El archivo no es válido.')}};r.readAsText(this.files[0])"></div></main>
-<script>
-const T=[['Tier 12','#DDDDEE',['Shiver','What is it','Phjork','Platinum Adventure','THE LIGHTNING ROAD','One Bad Apple','The Nightmare','MachinA DeluXXe','MICROPHONE','Red Alert']],['Tier 2','#D5D3E9',['iSpyWithMyLittleEye','GGEZ','Entropie','RAGING RAPIDS','PXTTXRN','Absolute Garbage','Speed Racer','The Crossing','Overdose','Golden Hour']],['Tier 3','#D3CBE7',['Change of Scene','Cataclysm','Blackfire Backfire','Dear Nostalgists','Clubstep','Problematic','Mr CrazyHands','VOGUE','Flicker','Citadel']],['Tier 4','#D3C3E4',['Thermodynamix','Death Moon','DeCode','Ruta del Sol','Dream Flower','Minecraft Stories','Blood Caves','Midflight Skysprite','DEMON PARK','Cherry Blossom']],['Tier 5','#D4BBE2',['Boobawamba','Blueprint','Invisible Light','Deadlocked','Metamorphosis','NODE','String Theocracy','Sidestep','Hollowing','PRSM']]];
-const key='progression-roulette-v1',id=(a,b)=>a+'-'+b,blank=()=>Object.fromEntries(T.flatMap((x,a)=>x[2].map((_,b)=>[id(a,b),{done:false,assigned:false}])));let s;try{s={...blank(),...JSON.parse(localStorage.getItem(key)||'{}')}}catch{s=blank()}let closed={},spinning=false;const $=x=>document.querySelector(x),esc=x=>x.replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c])),save=()=>localStorage.setItem(key,JSON.stringify(s)),all=()=>T.flatMap((x,a)=>x[2].map((name,b)=>({name,a,b,...s[id(a,b)]}))),percent=(a,b)=>b?Math.round(a/b*100):0;
-function options(){let v=$('#select').value;$('#select').innerHTML=T.map((x,a)=>`<option value="${a}">${x[0]}</option>`).join('');$('#select').value=v||0}function progress(){let x=all(),d=x.filter(x=>x.done).length,p=percent(d,x.length);$('#total').textContent=`${d} / ${x.length}`;$('#percent').textContent=p+'%';$('#totalbar').style.width=p+'%'}function row(name,a,b){let x=s[id(a,b)],st=x.done?'Completado':x.assigned?'Asignado':'';return `<div class="level ${x.done?'completed':''}"><input class="check" type="checkbox" data-done="${a}-${b}" ${x.done?'checked':''} aria-label="Completar ${esc(name)}"><span class="levelname">${esc(name)}</span>${st?`<span class="tag ${x.done?'done':''}">${st}</span>`:'<span></span>'}${x.assigned?`<button class="release" data-release="${a}-${b}" title="Liberar de la ruleta">↺</button>`:'<span></span>'}</div>`}function tiers(){$('#tiers').innerHTML=T.map((x,a)=>{let d=x[2].filter((_,b)=>s[id(a,b)].done).length,p=percent(d,x[2].length),shown=x[2].map((n,b)=>({n,b})).filter(z=>s[id(a,z.b)].assigned);return `<article class="tier" style="--tier:${x[1]}"><button class="tierhead" data-close="${a}"><b>🏆 ${x[0]}</b><span>${d} / ${x[2].length}</span><span class="arrow">${closed[a]?'⌄':'⌃'}</span></button>${closed[a]?'':`<div class="tierbody"><div class="tierprogress"><span>${p}% completado</span><div class="bar"><i style="width:${p}%"></i></div></div>${shown.length?shown.map(z=>row(z.n,a,z.b)).join(''):'<div class="empty">Aún no has girado la ruleta de este tier.</div>'}</div>`}</article>`}).join('')}function searching(){let q=$('#search').value.trim().toLowerCase(),h=$('#results');if(!q){h.innerHTML='<div class="empty">Busca un demon para ver su tier y estado.</div>';return}let m=all().filter(x=>x.name.toLowerCase().includes(q));h.innerHTML=m.length?m.map(x=>`<div class="searchrow"><div><b>${esc(x.name)}</b><br><small>${T[x.a][0]}</small></div><span class="badge ${x.done?'done':x.assigned?'assigned':''}">${x.done?'✓ Completado':x.assigned?'Asignado':'Disponible'}</span></div>`).join(''):'<div class="empty">No hay coincidencias.</div>'}function render(){options();progress();tiers();searching()}function spin(){if(spinning)return;let a=+$('#select').value,choices=T[a][2].map((name,b)=>({name,b})).filter(x=>!s[id(a,x.b)].assigned);if(!choices.length){$('#result').innerHTML='Tier agotado<small>Libera un demon asignado para repetir.</small>';return}spinning=true;$('#spin').disabled=true;let n=0,pick,timer=setInterval(()=>{pick=choices[Math.floor(Math.random()*choices.length)];$('#result').innerHTML=`${esc(pick.name)}<small>${T[a][0]} · girando…</small>`;if(++n===14){clearInterval(timer);s[id(a,pick.b)].assigned=true;save();$('#result').innerHTML=`${esc(pick.name)}<small>${T[a][0]} · ¡tu siguiente demon!</small>`;spinning=false;$('#spin').disabled=false;tiers();searching()}},70)}$('#spin').onclick=spin;$('#search').oninput=searching;$('#tiers').onclick=e=>{let c=e.target.closest('[data-close]'),r=e.target.closest('[data-release]');if(c){closed[c.dataset.close]=!closed[c.dataset.close];tiers()}if(r){let[a,b]=r.dataset.release.split('-');s[id(a,b)].assigned=false;save();render()}};$('#tiers').onchange=e=>{if(!e.target.dataset.done)return;let[a,b]=e.target.dataset.done.split('-');s[id(a,b)].done=e.target.checked;if(e.target.checked)s[id(a,b)].assigned=true;save();render()};$('#reset').onclick=()=>{if(confirm('¿Restablecer todo el progreso y las asignaciones?')){s=blank();save();$('#result').innerHTML='¿Preparado?<small>Elige un tier y gira la ruleta.</small>';render()}};render();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mi GD Demonlist</title>
+    <style>
+        /* Estilos inspirados en Geometry Dash */
+        body {
+            background-color: #111424; /* Fondo oscuro azulado típico del juego */
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #00ffcc; /* Color neón cyan */
+            text-shadow: 0 0 10px #00ffcc;
+            font-size: 2.5rem;
+        }
+        .subtitle {
+            color: #aaa;
+            margin-bottom: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        /* Tarjeta para cada nivel */
+        .demon-card {
+            background: #1b203a;
+            border: 2px solid #3b426e;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            transition: transform 0.2s;
+        }
+        .demon-card:hover {
+            transform: scale(1.02);
+            border-color: #ff0055; /* Cambia a rojo al pasar el mouse */
+        }
+        .demon-title {
+            font-size: 1.5rem;
+            margin: 0;
+            color: #ffcc00; /* Color dorado para el nivel */
+        }
+        .creator {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 10px;
+        }
+        .badge {
+            background: #ff0055;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>👹 MI TOP DEMONLIST PERSONALES 👹</h1>
+    <p class="subtitle">Los niveles más difíciles que he completado o que estoy practicando.</p>
+
+    <div class="container">
+        <!-- Tarjeta de Nivel 1 -->
+        <div class="demon-card">
+            <span class="badge">#1</span>
+            <h2 class="demon-title">Clubstep</h2>
+            <div class="creator">por RobTop</div>
+            <p>Mi primer demon oficial. La parte del ship inverso al 80% casi me hace romper el teclado.</p>
+        </div>
+
+        <!-- Tarjeta de Nivel 2 -->
+        <div class="demon-card">
+            <span class="badge">#2</span>
+            <h2 class="demon-title">Change of Scene</h2>
+            <div class="creator">por Bli</div>
+            <p>Visualmente es una obra de arte. Me costó alrededor de 800 intentos pero valió totalmente la pena.</p>
+        </div>
+    </div>
+
+</body>
+</html>
